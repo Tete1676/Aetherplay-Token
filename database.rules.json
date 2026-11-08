@@ -1,0 +1,151 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2')",
+        ".write": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'",
+        "profile": {
+          ".write": "auth != null && auth.uid === $uid",
+          ".validate": "newData.hasChildren(['displayName'])",
+          "displayName": {
+            ".validate": "newData.isString() && newData.val().length <= 24"
+          },
+          "email": {
+            ".validate": "newData.isString() && newData.val().length <= 254"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber()"
+          }
+        }
+      },
+      ".read": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'"
+    },
+    "signupRewardClaims": {
+      "$uid": {
+        ".read": "auth != null && (auth.uid === $uid || auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2')"
+      }
+    },
+    "nexus": {
+      "games": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'"
+      },
+      "maintenance": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'"
+      },
+      "leaderboard": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'"
+      },
+      "publicStats": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'"
+      },
+      "economy": {
+        ".read": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'",
+        ".write": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'"
+      },
+      "missions": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'"
+      },
+      "rewards": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'"
+      },
+      "announcement": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'"
+      },
+      "missionSubmissions": {
+        ".read": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'",
+        "$missionId": {
+          "$uid": {
+            ".read": "auth != null && (auth.uid === $uid || auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2')",
+            ".write": "auth != null && auth.uid === $uid",
+            ".validate": "newData.hasChildren(['uid','status','submittedAt'])"
+          }
+        }
+      },
+      "v7Config": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'"
+      },
+      "v7Tournaments": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'"
+      },
+      "v7TournamentEntries": {
+        ".read": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'",
+        "$tid": {
+          "$uid": {
+            ".read": "auth != null && (auth.uid === $uid || auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2')",
+            ".write": "auth != null && (auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2' || (auth.uid === $uid && !data.exists()))"
+          }
+        }
+      },
+      "v7Claims": {
+        ".read": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'",
+        "$uid": {
+          ".read": "auth != null && (auth.uid === $uid || auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2')",
+          "$claimId": {
+            ".read": "auth != null && (auth.uid === $uid || auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2')",
+            ".write": "auth != null && (auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2' || (auth.uid === $uid && !data.exists()))"
+          }
+        }
+      },
+      "v7Tickets": {
+        ".read": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'",
+        "$uid": {
+          ".read": "auth != null && (auth.uid === $uid || auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2')",
+          "$ticketId": {
+            ".read": "auth != null && (auth.uid === $uid || auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2')",
+            ".write": "auth != null && (auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2' || (auth.uid === $uid && !data.exists()))"
+          }
+        }
+      },
+      "v7Notifications": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'"
+      },
+      "v7Ledger": {
+        ".read": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'",
+        "$uid": {
+          ".read": "auth != null && (auth.uid === $uid || auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2')",
+          ".write": "auth != null && auth.uid === 'vLSKhd1onRUzcYLEzK1o85uMkbg2'"
+        }
+      },
+      "v74PublicOptIn": {
+        "$uid": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid",
+          ".validate": "newData.isBoolean()"
+        }
+      },
+      "v74GameRecords": {
+        ".read": true,
+        "$uid": {
+          ".write": "auth != null && auth.uid === $uid",
+          "$recordId": {
+            ".validate": "newData.hasChildren(['game','score','displayName','createdAt'])",
+            "game": {
+              ".validate": "newData.isString() && newData.val().length <= 40"
+            },
+            "score": {
+              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000000"
+            },
+            "displayName": {
+              ".validate": "newData.isString() && newData.val().length <= 32"
+            },
+            "createdAt": {
+              ".validate": "newData.isNumber()"
+            }
+          }
+        }
+      }
+    }
+  }
+}
